@@ -9,8 +9,8 @@ export class AuthService {
             const id = uuidv4()
             const hashedPassword = await handleComparePassword(password, 10);
             const [rows] = await db.query(
-                'INSERT INTO users (id, name, email, password) VALUES (?, ?, ?)',
-                [name, email, hashedPassword]
+                'INSERT INTO users (id, name, email, password) VALUES (?, ?, ?, ?)',
+                [id, name, email, hashedPassword]
             );
             return ({
                 message: 'User berhasil didaftarkan!',
